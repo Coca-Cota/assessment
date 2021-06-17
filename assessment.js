@@ -28,9 +28,30 @@ assessmentButton.onclick = () => {
         return;
     }
 
+    /**
+ * 名前の文字列を渡すと診断結果を返す関数
+ * @param {string} userName ユーザーの名前
+ * @return {string} 診断結果
+ */
+else{
+function assessment(userName){
+    // 全文字のコード番号を取得してそれを足し合わせる
+    let sumOfCharCode = 0
+    for (let i = 0;i < userName.length; i++){
+        sumOfCharCode = sumOfCharCode + userName.charCodeAt(i);
+    }
+
+    // 文字のコード番号の合計を回答の数で割って添字の数値を求める
+    const index = sumOfCharCode % answers.length;
+    let result = answers[index]
+
+    result = result.replaceAll('{userName}',userName);
+    return result;
+}
+}
+
 
     //診断結果表示エリアの作成
-    elese{
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
     header.innerText = '診断結果';
@@ -57,7 +78,7 @@ assessmentButton.onclick = () => {
     const script = document.createElement('script');
     script.setAttribute('src','https://platform.twitter.com/widgets.js');
     tweetDivided.appendChild(script);
-    }
+
 };
 
 const answers = [
@@ -79,25 +100,7 @@ const answers = [
 '{userName}のいいところは自制心です。やばいと思ったときにしっかりと衝動を抑えられる{userName}が皆から評価されています。'
 ];
 
-/**
- * 名前の文字列を渡すと診断結果を返す関数
- * @param {string} userName ユーザーの名前
- * @return {string} 診断結果
- */
-function assessment(userName){
-    // 全文字のコード番号を取得してそれを足し合わせる
-    let sumOfCharCode = 0
-    for (let i = 0;i < userName.length; i++){
-        sumOfCharCode = sumOfCharCode + userName.charCodeAt(i);
-    }
 
-    // 文字のコード番号の合計を回答の数で割って添字の数値を求める
-    const index = sumOfCharCode % answers.length;
-    let result = answers[index]
-
-    result = result.replaceAll('{userName}',userName);
-    return result;
-}
 
 // テストコード
 console.assert(
