@@ -30,6 +30,7 @@ assessmentButton.onclick = () => {
 
 
     //診断結果表示エリアの作成
+    elese{
     removeAllChildren(resultDivided);
     const header = document.createElement('h3');
     header.innerText = '診断結果';
@@ -56,6 +57,7 @@ assessmentButton.onclick = () => {
     const script = document.createElement('script');
     script.setAttribute('src','https://platform.twitter.com/widgets.js');
     tweetDivided.appendChild(script);
+    }
 };
 
 const answers = [
