@@ -15,6 +15,12 @@ function removeAllChildren(element) {
   }
 }
 
+userNameInput.onkeydown = event => {
+    if (event.key === 'Enter'){
+        assessmentButton.onclick();
+    }
+};
+
 assessmentButton.onclick = () => {
   const userName = userNameInput.value;
   if (userName.length === 0) {
